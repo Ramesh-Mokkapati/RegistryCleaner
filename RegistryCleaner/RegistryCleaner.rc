@@ -1,0 +1,93 @@
+// RegistryCleaner.rc - Application resources
+#include "resource.h"
+#include <winres.h>
+#include "afxres.h"
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+IDR_MAINFRAME ICON "RegistryCleaner.ico"
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE "Registry Cleaner"
+END
+
+// -------------------------------------------------------------------------
+// IDD_REGISTRYSCANNER  (CRegistryScannerDialog)
+// -------------------------------------------------------------------------
+IDD_REGISTRYSCANNER DIALOGEX 0, 0, 457, 332
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_MAXIMIZEBOX |
+      WS_SIZEBOX | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME
+CAPTION "Registry Scanner"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    // Row 1 (alphabetical A-F)
+    AUTOCHECKBOX "App Paths",          IDC_RS_CHK_APPPATH,           5,  6, 87, 12
+    AUTOCHECKBOX "Browser Helper",     IDC_RS_CHK_BROWSER_HELPER,   94,  6, 87, 12
+    AUTOCHECKBOX "File Extensions",    IDC_RS_CHK_FILE_EXT,         183,  6, 87, 12
+    AUTOCHECKBOX "Firewall Rules",     IDC_RS_CHK_FIREWALL,         272,  6, 87, 12
+    AUTOCHECKBOX "Fonts",              IDC_RS_CHK_FONTS,            361,  6, 91, 12
+    // Row 2 (H-S)
+    AUTOCHECKBOX "Help Files",         IDC_RS_CHK_HELP_FILES,         5, 20, 87, 12
+    AUTOCHECKBOX "Installers",         IDC_RS_CHK_INSTALLERS,        94, 20, 87, 12
+    AUTOCHECKBOX "Interface (COM)",    IDC_RS_CHK_INTERFACE,         183, 20, 87, 12
+    AUTOCHECKBOX "MUI Cache",          IDC_RS_CHK_MUI_CACHE,         272, 20, 87, 12
+    AUTOCHECKBOX "Shared DLLs",        IDC_RS_CHK_SHAREDDLL,         361, 20, 91, 12
+    // Row 3 (O-W)
+    AUTOCHECKBOX "Obsolete Software",  IDC_RS_CHK_UNINSTALL,           5, 34, 87, 12
+    AUTOCHECKBOX "Open With Apps",     IDC_RS_CHK_OPEN_WITH,          94, 34, 87, 12
+    AUTOCHECKBOX "Run At Startup",     IDC_RS_CHK_STARTUP,           183, 34, 87, 12
+    AUTOCHECKBOX "Sound Events",       IDC_RS_CHK_SOUND_EVENTS,      272, 34, 87, 12
+    AUTOCHECKBOX "Windows Services",   IDC_RS_CHK_SERVICES,          361, 34, 91, 12
+    // Scan button and progress bar
+    PUSHBUTTON      "Scan", IDC_RS_BTN_SCAN,  5, 51,  57, 15
+    LTEXT           "", IDC_RS_STATIC_PROGRESS, 66, 51,  77, 15
+    CONTROL         "", IDC_RS_PROGRESS, "msctls_progress32", PBS_SMOOTH|WS_CHILD|WS_VISIBLE,
+                    147, 54, 305, 10
+    // Results list
+    CONTROL         "", IDC_RS_LIST, "SysListView32",
+                    LVS_REPORT|LVS_SHOWSELALWAYS|WS_BORDER|WS_CHILD|WS_VISIBLE|WS_TABSTOP,
+                    5, 71, 448, 229
+    // Fix / action buttons
+    PUSHBUTTON      "Fix Selected",  IDC_RS_BTN_FIX_SEL,    5, 305,  69, 17
+    PUSHBUTTON      "Fix All",       IDC_RS_BTN_FIX_ALL,   78, 305,  57, 17
+    PUSHBUTTON      "Backup && Fix", IDC_RS_BTN_BACKUP_FIX,139, 305,  86, 17
+    PUSHBUTTON      "Ignore",        IDC_RS_BTN_IGNORE,    230, 305,  74, 17
+    PUSHBUTTON      "Close",         IDC_RS_BTN_CLOSE,     395, 305,  57, 17
+    LTEXT           "", IDC_RS_STATIC_STATUS, 5, 323, 448,  9
+END
+
+// -------------------------------------------------------------------------
+// Version info
+// -------------------------------------------------------------------------
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName",      "Videalert"
+            VALUE "FileDescription",  "RegistryCleaner"
+            VALUE "FileVersion",      "1.0.0.0"
+            VALUE "InternalName",     "RegistryCleaner"
+            VALUE "OriginalFilename", "RegistryCleaner.exe"
+            VALUE "ProductName",      "RegistryCleaner"
+            VALUE "ProductVersion",   "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
